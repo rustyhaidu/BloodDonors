@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="parse_app_id">4OnmuKWTVHg7XUmtMtRqecXCjM3ElMLWpWmAHZ9b</string>
+    <string name="parse_client_key">4eHnztnQVuTNoOViZtROco06Rwh1lcKLlTBdNrXr</string>
+
+    <string name="hello">Hello World, ParseStarterProjectActivity!</string>
+    <string name="app_name">ParseStarterProject</string>
+    <string name="title_activity_blood_donor_centers">BloodDonorCentersActivity</string>
+
+
+    <string name="title_activity_register_donor">RegisterDonor</string>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="label1">Centers</string>
+    <string name="label2">Offers</string>
+    <string name="label3">Requests</string>
+    <string name="label4">Register</string>
+    <string name="body1">Body One</string>
+    <string name="body2">Body Two</string>
+    <string name="body3">Body Three</string>
+    <string name="body4">Body Four</string>
+</resources>
