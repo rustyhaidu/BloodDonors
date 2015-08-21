@@ -1,113 +1,41 @@
 package com.parse.starter;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-/**
- * Created by claudiu.haidu on 8/6/2015.
- */
+import com.parse.ParseAnonymousUtils;
+import com.parse.ParseUser;
+
 public class MainActivity extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		// Determine whether the current user is an anonymous user
+		if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
+			// If user is anonymous, send the user to LoginSignupActivity.class
+			Intent intent = new Intent(MainActivity.this,
+					LoginSignupActivity.class);
+			startActivity(intent);
+			finish();
+		} else {
+			// If current user is NOT anonymous user
+			// Get current user data from Parse.com
+			ParseUser currentUser = ParseUser.getCurrentUser();
+			if (currentUser != null) {
+				// Send logged in users to Welcome.class
+				Intent intent = new Intent(MainActivity.this, Welcome.class);
+				startActivity(intent);
+				finish();
+			} else {
+				// Send user to LoginSignupActivity.class
+				Intent intent = new Intent(MainActivity.this,
+						LoginSignupActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		}
 
-        String label1 = getResources().getString(R.string.label1);
-        ActionBar.Tab tab = actionBar.newTab();
-        tab.setText(label1);
-        TabListener<Tab1Fragment> t1 = new TabListener<Tab1Fragment>(this,label1,Tab1Fragment.class);
-        tab.setTabListener(t1);
-        actionBar.addTab(tab);
-
-        String label2 = getResources().getString(R.string.label2);
-        tab= actionBar.newTab();
-        tab.setText(label2);
-        TabListener<Tab2Fragment> t2 = new TabListener<Tab2Fragment>(this,label2,Tab2Fragment.class);
-        tab.setTabListener(t2);
-        actionBar.addTab(tab);
-
-        String label3 = getResources().getString(R.string.label3);
-        tab= actionBar.newTab();
-        tab.setText(label3);
-        TabListener<Tab3Fragment> t3 = new TabListener<Tab3Fragment>(this,label3,Tab3Fragment.class);
-        tab.setTabListener(t3);
-        actionBar.addTab(tab);
-
-        String label4 = getResources().getString(R.string.label4);
-        tab= actionBar.newTab();
-        tab.setText(label4);
-        TabListener<Tab4Fragment> t4 = new TabListener<Tab4Fragment>(this,label4,Tab4Fragment.class);
-        tab.setTabListener(t4);
-        actionBar.addTab(tab);
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    private class TabListener<T extends Fragment> implements ActionBar.TabListener{
-        private Fragment mFragment;
-        private final Activity mActivity;
-        private final String mTag;
-        private final Class<T> mClass;
-
-        public TabListener(Activity activity,String tag, Class<T> clz)
-        {
-            mActivity = activity;
-            mTag = tag;
-            mClass = clz;
-        }
-        @Override
-        public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-            if (mFragment ==null) {
-                mFragment = Fragment.instantiate(mActivity, mClass.getName());
-                ft.add(android.R.id.content, mFragment, mTag);
-            }
-            else {
-                ft.attach(mFragment);
-            }
-        }
-
-        @Override
-        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-            if (mFragment !=null) {
-                ft.detach(mFragment);
-            }
-
-        }
-
-        @Override
-        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-
-        }
-    }
+	}
 }
