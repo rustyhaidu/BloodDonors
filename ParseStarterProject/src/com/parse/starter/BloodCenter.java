@@ -12,8 +12,13 @@ public class BloodCenter extends ParseObject {
     public String getName() {
         return getString("Name");
     }
+    public String getCity() {
+        return getString("City");
+    }
 
-
+    public String getAddress() {
+        return getString("Address");
+    }
 
 
     public int getOpenAt() {

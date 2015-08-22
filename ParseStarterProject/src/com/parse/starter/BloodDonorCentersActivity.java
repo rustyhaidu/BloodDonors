@@ -1,4 +1,4 @@
-/*package com.parse.starter;
+package com.parse.starter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -114,4 +114,4 @@ public class BloodDonorCentersActivity extends Activity {
             public TextView name, address, openingTime;
         }
     }
-} */
+}
