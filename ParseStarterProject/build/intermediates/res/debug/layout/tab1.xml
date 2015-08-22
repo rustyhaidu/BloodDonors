@@ -4,7 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/tab1"
-    android:gravity="center">
+    android:gravity="center"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="9">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,4 +19,17 @@
         android:id="@+id/textview1"
         android:text="@string/body1"/>
 
-</LinearLayout><!-- From: file:/C:/TemeCursAndroid/Proiect/BloodDonor/ParseStarterProject/res/layout/tab1.xml -->
+
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/mapButton"
+        android:padding="10dp"
+        android:text="Map"
+        android:onClick=""/>
+
+
+</LinearLayout><!-- From: file:/C:/Users/Claudiu/Documents/BloodDonor/ParseStarterProject/res/layout/tab1.xml -->
