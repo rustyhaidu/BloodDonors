@@ -93,6 +93,8 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
                         nameObj.put("City", ((EditText) getActivity().findViewById(R.id.city)).getText().toString());
                         nameObj.put("BloodGroup", ((EditText) getActivity().findViewById(R.id.blood_group)).getText().toString());
                         nameObj.put("RH", ((EditText) getActivity().findViewById(R.id.blood_rh)).getText().toString());
+                        nameObj.put("Type", ((EditText) getActivity().findViewById(R.id.etType)).getText().toString());
+                        nameObj.put("Validity", ((EditText) getActivity().findViewById(R.id.etValidity)).getText().toString());
                         nameObj.saveInBackground();
                     }
                 }
@@ -128,7 +130,7 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
         query.whereExists("City");
         query.whereExists("BloodGroup");
         query.whereExists("RH");
-        query.whereEqualTo("username","clauuu");
+        query.whereEqualTo("username",currentUser);
 
         query.findInBackground(new FindCallback<ParseObject>() {
 
@@ -138,9 +140,9 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
 
                 if (e == null) {
                     Log.d("score", "Retrieved ");
-                    Toast.makeText(getActivity().getApplicationContext(),"Toast"+(int)list.size(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getApplicationContext(),"Found "+(int)list.size(),Toast.LENGTH_LONG).show();
                     for (int i = 0; i < list.size(); i++) {
-                        Toast.makeText(getActivity().getApplicationContext(),"Toast",Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getActivity().getApplicationContext(),"Toast",Toast.LENGTH_LONG).show();
 
                         ParseObject p = list.get(i);
 
@@ -148,11 +150,15 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
                         EditText eCity = (EditText)getActivity().findViewById(R.id.city);
                         EditText eBloodGroup = (EditText)getActivity().findViewById(R.id.blood_group);
                         EditText eRH = (EditText)getActivity().findViewById(R.id.blood_rh);
+                        EditText eType = (EditText)getActivity().findViewById(R.id.etType);
+                        EditText eValidity = (EditText)getActivity().findViewById(R.id.etValidity);
 
                        eName.setText(p.getString("Name"));
                        eCity.setText(p.getString("City"));
                        eBloodGroup.setText(p.getString("BloodGroup"));
                        eRH.setText(p.getString("RH"));
+                       eType.setText(p.getString("Type"));
+                       eValidity.setText(p.getString("Validity"));
 
 
 

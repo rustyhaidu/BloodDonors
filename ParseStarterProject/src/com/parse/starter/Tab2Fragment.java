@@ -30,15 +30,20 @@ public class Tab2Fragment extends Fragment  {
         donnersView = (ListView) view.findViewById(R.id.offersList);
         return view;
     }
+    public void onResume(){
+        super.onResume();
+        loadOffers();
+    }
 
 
        private void loadOffers() {
 
         ParseQuery<BloodDonor> query = ParseQuery.getQuery("Donor");
-        query.whereExists("City");
-        query.whereExists("BloodGroup");
-        query.whereExists("RH");
+       // query.whereExists("City");
+       // query.whereExists("BloodGroup");
+       // query.whereExists("RH");
         query.whereEqualTo("Type","donner");
+           //query.whereMatches("Type","donner");
 
         query.findInBackground(new FindCallback<BloodDonor>() {
 

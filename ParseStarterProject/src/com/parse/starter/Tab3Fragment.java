@@ -28,20 +28,24 @@ public class Tab3Fragment extends Fragment {
        // return (LinearLayout) inflater.inflate(R.layout.tab3,container,false);
         View view = inflater.inflate(R.layout.tab3, container, false);
        // View view_header = inflater.inflate(R.layout.header_requests, container, false);
-        loadRequests();
+        //loadRequests();
 
         requestsView = (ListView) view.findViewById(R.id.requestsList);
        // requestsView.addHeaderView(view_header);
         return view;
     }
+    public void onResume(){
+        super.onResume();
+        loadRequests();
+    }
 
     private void loadRequests() {
 
         ParseQuery<BloodDonor> query = ParseQuery.getQuery("Donor");
-        query.whereExists("City");
-        query.whereExists("BloodGroup");
-        query.whereExists("RH");
-        query.whereExists("Validity");
+       // query.whereExists("City");
+       // query.whereExists("BloodGroup");
+       // query.whereExists("RH");
+       // query.whereExists("Validity");
         query.whereEqualTo("Type","requester");
 
 
