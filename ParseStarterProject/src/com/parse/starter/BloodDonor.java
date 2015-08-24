@@ -1,5 +1,6 @@
 package com.parse.starter;
 
+import com.parse.ParseACL;
 import com.parse.ParseClassName;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -18,7 +19,13 @@ public class BloodDonor extends ParseObject{
     }
 
     public void setUserName(String name) {
+
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicWriteAccess(true);
+       // ParseACL.setDefaultACL(defaultACL, true);
         put("username", name);
+        put("ACL", defaultACL);
     }
     public String getUserName() {
         return getString("username");

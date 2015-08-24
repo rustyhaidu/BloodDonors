@@ -46,6 +46,7 @@ public class Tab3Fragment extends Fragment {
        // query.whereExists("BloodGroup");
        // query.whereExists("RH");
        // query.whereExists("Validity");
+       //  query.whereExists("Type");
         query.whereEqualTo("Type","requester");
 
 
