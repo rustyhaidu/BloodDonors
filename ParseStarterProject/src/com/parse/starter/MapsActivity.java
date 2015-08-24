@@ -1,7 +1,6 @@
 package com.parse.starter;
 
 import android.content.Context;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -54,12 +53,12 @@ public class MapsActivity extends FragmentActivity {
 
     private void setUpMap() {
         LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+       // Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        //double longitude = location.getLongitude();
+        //double latitude = location.getLatitude();
 
         mMap.setMyLocationEnabled(true);
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Marker"));
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Marker"));
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("BloodCenter");
         query.whereExists("Location");

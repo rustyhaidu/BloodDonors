@@ -24,7 +24,7 @@ import java.util.List;
  * Created by claudiu.haidu on 7/28/2015.
  */
 public class Tab1Fragment extends Fragment implements View.OnClickListener {
-    String AllAddresses;
+   // String AllAddresses;
     private ListView donnorCentersView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

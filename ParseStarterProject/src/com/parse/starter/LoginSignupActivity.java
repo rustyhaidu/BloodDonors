@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 public class LoginSignupActivity extends Activity {
@@ -89,7 +90,23 @@ public class LoginSignupActivity extends Activity {
 					user.signUpInBackground(new SignUpCallback() {
 						public void done(ParseException e) {
 							if (e == null) {
+
 								// Show a simple Toast message upon successful registration
+								//De pus cod
+								BloodDonor bloodDonor = new BloodDonor();
+								bloodDonor.setUserName(((EditText)findViewById(R.id.username)).getText().toString());
+								bloodDonor.saveInBackground(new SaveCallback() {
+									@Override
+									public void done(ParseException e) {
+										if (e == null) {
+											Toast.makeText(getApplicationContext(), "Saved with success", Toast.LENGTH_LONG).show();
+										} else {
+											Toast.makeText(getApplicationContext(), "Saved with error:" + e.getMessage(), Toast.LENGTH_LONG).show();
+
+										}
+									}
+								});
+
 								Toast.makeText(getApplicationContext(),
 										"Successfully Signed up, please log in.",
 										Toast.LENGTH_LONG).show();

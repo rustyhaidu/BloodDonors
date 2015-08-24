@@ -2,8 +2,6 @@ package com.parse.starter;
 
 
 import android.app.Fragment;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,9 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseGeoPoint;
-import com.parse.SaveCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -31,7 +31,16 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
        View view =  inflater.inflate(R.layout.tab4,container,false);
         Button saveButton = (Button) view.findViewById(R.id.saveButton);
         saveButton.setOnClickListener(this);
+
         return view;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        loadData();
+        //Toast.makeText(getActivity().getApplicationContext(),"OFFF",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -42,7 +51,7 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
 
     public void onSave() {
 
-        BloodDonor bloodDonor = new BloodDonor();
+       /* BloodDonor bloodDonor = new BloodDonor();
         bloodDonor.setName(((EditText) getView().findViewById(R.id.name)).getText().toString());
         bloodDonor.setCity(((EditText) getView().findViewById(R.id.city)).getText().toString());
         bloodDonor.setBloodGroup(((EditText) getView().findViewById(R.id.blood_group)).getText().toString());
@@ -68,6 +77,30 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
 
                 }
             }
+        }); */
+        String currentUser = ParseUser.getCurrentUser().getUsername().toString();
+        ParseQuery query = new ParseQuery("Donor");
+        query.whereEqualTo("username", currentUser);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> donorList, ParseException e)
+            {
+                if (e == null)
+                {
+                    for (ParseObject nameObj : donorList)
+                    {
+                        nameObj.put("Name", ((EditText) getActivity().findViewById(R.id.name)).getText().toString());
+                        nameObj.put("City", ((EditText) getActivity().findViewById(R.id.city)).getText().toString());
+                        nameObj.put("BloodGroup", ((EditText) getActivity().findViewById(R.id.blood_group)).getText().toString());
+                        nameObj.put("RH", ((EditText) getActivity().findViewById(R.id.blood_rh)).getText().toString());
+                        nameObj.saveInBackground();
+                    }
+                }
+                else
+                {
+                    Log.d("Post retrieval", "Error: " + e.getMessage());
+                }
+            }
         });
     }
 
@@ -81,5 +114,56 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+    public void loadData(){
+
+        ParseQuery query = new ParseQuery("Donor");
+        String currentUser = ParseUser.getCurrentUser().getUsername().toString();
+
+        Toast.makeText(getActivity().getApplicationContext(),currentUser,Toast.LENGTH_LONG).show();
+
+        //query.whereExists("username");
+        query.whereExists("Name");
+        //query.whereExists("Surname");
+        query.whereExists("City");
+        query.whereExists("BloodGroup");
+        query.whereExists("RH");
+        query.whereEqualTo("username","clauuu");
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+
+            @Override
+            public void done(List<ParseObject> list, com.parse.ParseException e) {
+
+
+                if (e == null) {
+                    Log.d("score", "Retrieved ");
+                    Toast.makeText(getActivity().getApplicationContext(),"Toast"+(int)list.size(),Toast.LENGTH_LONG).show();
+                    for (int i = 0; i < list.size(); i++) {
+                        Toast.makeText(getActivity().getApplicationContext(),"Toast",Toast.LENGTH_LONG).show();
+
+                        ParseObject p = list.get(i);
+
+                        EditText eName = (EditText)getActivity().findViewById(R.id.name);
+                        EditText eCity = (EditText)getActivity().findViewById(R.id.city);
+                        EditText eBloodGroup = (EditText)getActivity().findViewById(R.id.blood_group);
+                        EditText eRH = (EditText)getActivity().findViewById(R.id.blood_rh);
+
+                       eName.setText(p.getString("Name"));
+                       eCity.setText(p.getString("City"));
+                       eBloodGroup.setText(p.getString("BloodGroup"));
+                       eRH.setText(p.getString("RH"));
+
+
+
+                    }
+                   // getCenters(Addresses);
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+         });
+    }
+
 
 }

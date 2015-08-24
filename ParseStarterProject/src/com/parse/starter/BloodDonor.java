@@ -17,6 +17,12 @@ public class BloodDonor extends ParseObject{
         put("Name", name);
     }
 
+    public void setUserName(String name) {
+        put("username", name);
+    }
+    public String getUserName() {
+        return getString("username");
+    }
 
     public String getCity() {
         return getString("City");
@@ -44,6 +50,9 @@ public class BloodDonor extends ParseObject{
         return getString("BloodGroup");
     }
 
+    public String getValidity() {
+        return getString("Validity");
+    }
 
     public void setLocation(ParseGeoPoint location) {
         put("Location", location);

@@ -371,7 +371,7 @@
     <eat-comment/>
     <string name="title_activity_blood_donor_centers">BloodDonorCentersActivity</string>
     <string name="title_activity_login_signup">LoginSignupActivity</string>
-    <string name="title_activity_main_activity_s">MainActivityS</string>
+    <string name="title_activity_main_activity_s">Blood Donor App</string>
     <string name="title_activity_register_donor">RegisterDonor</string>
     <string name="title_activity_welcome">Welcome</string>
     <!-- From: file:/C:/Users/Claudiu/Documents/BloodDonor/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/res/values/wallet_strings.xml -->
