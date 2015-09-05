@@ -46,4 +46,4 @@
         android:layout_below="@+id/login"
         android:text="@string/SignupBtn" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Claudiu/Documents/teme/Renamed/BloodDonor/BloodDonors/res/layout/loginsignup.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Claudiu/Documents/teme/BloodDonors/BloodDonors/res/layout/loginsignup.xml -->

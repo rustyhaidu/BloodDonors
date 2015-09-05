@@ -31,4 +31,4 @@
         android:onClick=""
         android:layout_below="@+id/txtuser" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Claudiu/Documents/teme/Renamed/BloodDonor/BloodDonors/res/layout/welcome.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Claudiu/Documents/teme/BloodDonors/BloodDonors/res/layout/welcome.xml -->
