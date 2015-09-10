@@ -24,6 +24,7 @@ import java.util.List;
 /**
  * Created by claudiu.haidu on 7/28/2015.
  */
+// TODO - CODE REVIEW - andrei | 9/10/15 - Tab1Fragment should have a clearer name -> i.e CentersFragment. The same applies to the rest of the tabs.
 public class Tab1Fragment extends Fragment implements View.OnClickListener {
    // String AllAddresses;
     private ListView donnorCentersView;
@@ -56,6 +57,7 @@ public class Tab1Fragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    // TODO - CODE REVIEW - andrei | 9/10/15 - Don't commit code that is unused
    /* public void getCenters(String Addresses) {
         AllAddresses = Addresses;
         TextView centers = (TextView) getActivity().findViewById(R.id.textview1);

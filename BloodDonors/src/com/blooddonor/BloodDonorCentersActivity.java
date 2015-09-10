@@ -20,6 +20,7 @@ import com.parse.starter.R;
 import java.util.List;
 
 
+// TODO - CODE REVIEW - andrei | 9/10/15 - This is never used.
 public class BloodDonorCentersActivity extends Activity {
 
     private static final String TAG= "BloodDonnorCenter";

@@ -7,6 +7,7 @@ import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+// TODO - CODE REVIEW - andrei | 9/10/15 - The name should probably be BloodDonorApplication -> since this the app object for YOUR app, not the parse example.
 public class ParseApplication extends Application {
 
 

@@ -13,6 +13,7 @@ import com.parse.starter.R;
 /**
  * Created by claudiu.haidu on 8/6/2015.
  */
+// TODO - CODE REVIEW - andrei | 9/10/15 - The name is vague. I shouldn't have to read the code to undertsand what this class does.
 public class MainActivityS extends Activity {
 
     @Override
@@ -23,6 +24,7 @@ public class MainActivityS extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+        // TODO - CODE REVIEW - andrei | 9/10/15 - the tab setup is almost the same code -> you can improve this by extracting a method: initializeTab()
         String label1 = getResources().getString(R.string.label1);
         ActionBar.Tab tab = actionBar.newTab();
         tab.setText(label1);

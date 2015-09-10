@@ -17,6 +17,7 @@ import com.parse.starter.R;
 
 public class LoginSignupActivity extends Activity {
 	// Declare Variables
+	// TODO - CODE REVIEW - andrei | 9/10/15 - Why are these default? They should be private.
 	Button loginbutton;
 	Button signup;
 	String usernametxt;

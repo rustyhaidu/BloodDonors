@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.parse.starter.R;
 
+// TODO - CODE REVIEW - andrei | 9/10/15 - This is never used.
 public class ParseStarterProjectActivity extends Activity {
 	private static final String TAG = "P";
 

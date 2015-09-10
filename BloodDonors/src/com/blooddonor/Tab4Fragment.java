@@ -170,6 +170,7 @@ public class Tab4Fragment extends Fragment implements View.OnClickListener{
 
 
                 if (e == null) {
+                  // TODO - CODE REVIEW - andrei | 9/10/15 - This is a very long method. You coud extract methods from it to make it more readable.
                     Log.d("score", "Retrieved ");
                     Toast.makeText(getActivity().getApplicationContext(),"Found "+(int)list.size(),Toast.LENGTH_LONG).show();
                     for (int i = 0; i < list.size(); i++) {

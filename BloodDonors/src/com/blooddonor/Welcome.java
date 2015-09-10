@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.parse.ParseUser;
 import com.parse.starter.R;
 
+// TODO - CODE REVIEW - andrei | 9/10/15 - This is never used.
 public class Welcome extends Activity {
 	
 	// Declare Variable
